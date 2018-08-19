@@ -116,77 +116,77 @@ class QbeParser:
         self.plaintext.append(data)
         return True
 
-    #Searches through two sent Dictionaries to see if Query is inside of Item.
+    #Searches through two sent Dictionaries to see if Kwiery is inside of Item.
     #Takes in the dictionary to search through, and the dictionary to be found.  Returns True if found False if not.
-    def searchDict(self, item, query):
-        if not query:
+    def searchDict(self, item, q):
+        if not q:
             return True
         elif not item:
             return False
 
-        for key in query.keys():
+        for key in q.keys():
             #Search through this Trie for each key.
             payload = findPayloadInTrie(item, key)
             if payload:
-                if type(payload) is TrieNode and type(query[key]) is dict:
+                if type(payload) is TrieNode and type(q[key]) is dict:
                     #We have to go deeper
-                    if not self.searchDict(payload, query[key]):
+                    if not self.searchDict(payload, q[key]):
                         return False
                 #primitive types
-                elif type(payload) is list and type(query[key]) is list:
+                elif type(payload) is list and type(q[key]) is list:
                     payloadCP = []
                     for num in payload:
                         payloadCP.append(num)
                     try:
-                        for num in query[key]:
+                        for num in q[key]:
                             payloadCP.remove(num)
                     except ValueError:
                         return False
                 else:
-                    if payload != query[key]:
+                    if payload != q[key]:
                         return False
             else:
-                if query[key]:
+                if q[key]:
                     return False
         return True
 
     #The Get command.  Retrieves data from Search and prints it to the screen.
-    def getData(self, query):
-        if not query:
+    def getData(self, q):
+        if not q:
             for i, item in enumerate(self.storage):
                 print(plaintext[i])
             return True
         elif not self.storage:
             return False
 
-        query = json.loads(query)
+        q = json.loads(q)
 
         #Build a list of matching values.
         matches = []
 
         #Loop through all items in storage.  Is there a better way?
         for i, item in enumerate(self.storage):
-            #We are querying each item in storage with query.
-            if self.searchDict(item, query):
+            #We are qing each item in storage with q.
+            if self.searchDict(item, q):
                 matches.append(self.plaintext[i])
         for match in matches:
             if match:
                 print(match)
 
-    #The Delete command.  Delete query data from storage.
-    def deleteData(self, query):
-        if not query:
+    #The Delete command.  Delete q data from storage.
+    def deleteData(self, q):
+        if not q:
             self.storage = []
             self.plaintext = []
             return True
         elif not self.storage:
             return False
 
-        query = json.loads(query)
+        q = json.loads(q)
 
         #Remove items in inverse order to avoid indexing issues.
         for i in range(len(self.storage)-1, -1, -1):
-            if self.searchDict(self.storage[i], query):
+            if self.searchDict(self.storage[i], q):
                 del self.storage[i]
                 del self.plaintext[i]
 
