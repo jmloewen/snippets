@@ -1,0 +1,13 @@
+#An 88% solution, I don't know why this one is marked as Hard on leetcode.  Could probably be made better with iterables.
+
+Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+
+Example:
+
+Input:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+Output: 1->1->2->3->4->4->5->6
