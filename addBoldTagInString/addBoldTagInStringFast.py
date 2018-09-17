@@ -1,20 +1,21 @@
+#A 100% solution.  This is how I was trying to do it the last few days, but I must have had some weird bug.
 class Solution:
     def addBoldTag(self, s, dict):
-        #A faster and still simple solution adapted from Bar 2
-        #How is this different than what I was doing before?  A 100% solution.
         length = len(s)
         boldLetters = [False] * length
 
         for word in dict:
             start = s.find(word)
-            end = len(word)
+            size = len(word)
+
             while start > -1:
-                boldLetters[start:start+end] = [True] * len(word)
+                boldLetters[start:start+size] = [True] * len(word)
                 start = s.find(word, start + 1)
 
         ret = ""
         inTag = False
-        for i in range(0, len(boldLetters)):
+        i=0
+        while i < length:
             if boldLetters[i]:
                 if not inTag:
                     ret = ret + "<b>"
@@ -25,6 +26,7 @@ class Solution:
                     ret = ret + "</b>"
                     inTag = False
                 ret = ret + s[i]
+            i += 1
         if inTag:
             return ret + "</b>"
         return ret

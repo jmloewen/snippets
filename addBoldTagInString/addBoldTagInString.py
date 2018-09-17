@@ -1,17 +1,12 @@
+#A sad 30% solution, adapted from Leetcode Approach #1.
 class Solution:
     def addBoldTag(self, s, dict):
-        #A faster and still simple solution adapted from Bar 2
-        #How is this different than what I was doing before?  A 100% solution.
-        length = len(s)
-        boldLetters = [False] * length
-
-        for word in dict:
-            start = s.find(word)
-            end = len(word)
-            while start > -1:
-                boldLetters[start:start+end] = [True] * len(word)
-                start = s.find(word, start + 1)
-
+        boldLetters = [False] * len(s)
+        for i in range(0, len(s)):
+            for word in dict:
+                pre = s[i:]    #Contains the end of the string.
+                if pre.startswith(word):
+                    boldLetters[i:i+len(word)] = [True] * len(word)
         ret = ""
         inTag = False
         for i in range(0, len(boldLetters)):
