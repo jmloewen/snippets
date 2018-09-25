@@ -7,12 +7,10 @@ class Solution:
         #left and right edges of windows will include left and right edges of T.  need to find intermediary values within substring of S, in no particular order.
         #Find t within s.
         #Find start of t.
-        sizeT = len(t)
         keysToFill = len(set(t))
-        keysFilled = 0
         charDict = defaultdict(lambda: 0)
         winDict = defaultdict(lambda: 0)
-        ans = None
+        ans = ""
 
         #Fill our charDict with characters that are in t.
         for c in t:
@@ -27,16 +25,13 @@ class Solution:
                 winDict[cur] += 1
                 #If the amount of this character in cD == it in wD, check off a requirement as filled.
                 if winDict[cur] == charDict[cur]:
-                    keysFilled += 1
-            else:
-                #Then it's not in the charDict.  continue rightwards.
-                pass
+                    keysToFill -= 1
 
-            if keysFilled == keysToFill:
-                #We've found an answer.  Move left to the right until it's in the smallest possible still valid state.
+            if keysToFill == 0:
+                #We've found an answer.  Move left to the right until it's in the smallest possible valid state.
                 while left < right:
                     curLeft = s[left]
-                    #If removing this value would not reduce us to an insolvent state, do it.
+                    #If removing this value would not reduce us to an invalid state, do it.
                     if winDict[curLeft] > charDict[curLeft] and charDict[curLeft] > 0:
                         winDict[curLeft] -= 1
                     elif winDict[curLeft] == charDict[curLeft] and charDict[curLeft] >= 1:
@@ -46,17 +41,12 @@ class Solution:
                 if not ans or right - left < len(ans):
                     ans = s[left:right + 1]
 
-
                 if len(ans) == len(t):
                     return ans
 
-                #Adjust left rightwards to continue the check.\
+                #Adjust left rightwards to continue the check.
                 winDict[s[left]] -= 1
-                keysFilled -= 1
-
+                keysToFill += 1
                 left += 1
             right += 1
-
-        if ans:
-            return ans
-        return ""
+        return ans
