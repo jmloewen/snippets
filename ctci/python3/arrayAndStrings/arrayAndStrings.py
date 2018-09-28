@@ -1,14 +1,11 @@
-#1.1: Implement an algorithm to determine if a string has all unique characters.
-    #1.1.2: What if we cannot use additional data structures?
+#Thoughts?
+#Make a dict.  Store everything in individual Dict entries.  If value is in dict, return F.
+#O(s) time, O(s) storage.
 
-    #Thoughts?
-    #Make a dict.  Store everything in individual Dict entries.  If value is in dict, return F.
-    #O(s) time, O(s) storage.
+#String is not sorted.
+#If it were sorted on ASCII value, could simply check to see if adjacent values were equal.  Would be O(s) time, O(1) space.
 
-    #String is not sorted.
-    #If it were sorted on ASCII value, could simply check to see if adjacent values were equal.  Would be O(s) time, O(1) space.
-
-    #For unsorted, dict approach seems to be the right one, even though it's the way that I've always done this problem.
+#For unsorted, dict approach seems to be the right one, even though it's the way that I've always done this problem.
 class Solution():
     def isUnique(self, S):
         ltrDict = {}
