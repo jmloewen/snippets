@@ -1,0 +1,12 @@
+#Implement a method to preform basic string compression using the counts of prepeated characters. For example, string:
+#aabcccaaa becomes a2b1c5a3.
+#If the compressed string is longer than or equal to the length of the original string, return the original string.
+#Assume the string only has upper and lowercase letters.
+#Assuming that upper and lowercase letters are unique.
+
+
+#Notes: This feels like another case of count and construct with a dictionary, an O(n) operation.
+#There is no guarantee of a sorted string.
+#Keep a monitor variable to determine if the new string is longer or shorter.
+#Or just do a length comparison.
+#Len is an O(1) operation.  So, if for any reason compress becomes larger than S, return S.

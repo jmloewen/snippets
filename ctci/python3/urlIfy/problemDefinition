@@ -1,0 +1,4 @@
+#Write a method to replace all spaces in a string with '%20'.  May assume that the string has sufficient space at the end to hold the additional characters, and that you are given the 'true' length of the string.
+#ex: Input -  "Mr John Smith    ", 13
+#    Output - "Mr%20John%20Smith"
+#See: There are enough spaces allocated to the end of Input so that we may later replace '%20' on each one.

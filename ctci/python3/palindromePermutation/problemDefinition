@@ -1,0 +1,4 @@
+#palindromePermutation
+#Given a string, write a function to check if it is a permutation of a palindrome.
+#(a palindrome is a word or phrase that is the same forwards as backwards.
+#Palindrome does not need to be composed of real words.

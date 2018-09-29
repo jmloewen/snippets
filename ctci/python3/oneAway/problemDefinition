@@ -1,0 +1,11 @@
+#oneAway.  There are three types of edits that can be preformed on strings.  Insertion, Deletion, and Replacements.  Find if two strings are one edit distance away from each other.
+#Examples:
+#pale, ple -> True
+#pales, pale -> True
+#pale, bale -> True
+#pale, bake -> False
+#AKA  OneEditDistance.  Also includes Zero Edit Distance.
+#4 options to be 1 away.
+#1. S1 == S2
+#2 / 3. The smaller of S1 and S2, Plus 1 character, is the larger of S1 or S2 (Insertion/deletion).
+#4. One character was edited between the two.
