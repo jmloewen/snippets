@@ -1,0 +1,7 @@
+#2.1: Remove duplicates from an unsorted linked list.
+    #Store values in a dict, search dict upon finding new values, remove if in dict.  O(N) time and space.
+#2.1.1: How would you solve this if a temporary buffer were not allowed?
+    #Sort & filter, NLogN time, O(1) space.
+
+    #Note that this was not tested.  Should come back and make a test suite at some point, but really, who wants to spend time doing that on a LL?  Nobawdy.
+    
