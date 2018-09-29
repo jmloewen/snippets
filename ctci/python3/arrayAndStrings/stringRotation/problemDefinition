@@ -1,0 +1,8 @@
+#"Assume you have a method issubstring which checks if one word is a substring of another.
+#given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call to isSubtring"
+#Ex: "waterbottle" is a rotation of "erbottlewat"
+
+#Note: The wording on this problem is awful, or maybe the problem itself is just bad.
+#It should either be asking me to check if something is a substring, give me the substring command outright, or be asking if both words are substrings of the other.
+#The problem definition says "If S2 is a rotation of S1", but "gives" this substring command that
+#isn't checking that S2 is a substring of S1, but if both are substrings of each other.
